@@ -1,8 +1,19 @@
-const { Client } = require('pg');
-const client = new Client({
+const { Pool } = require('pg');
+const
+
+
+
+const localConnection =
+{
     user: 'postgres',
     password: 'pass',
     database: 'student_app_db'
-});
+}
 
-module.exports = client;
+const renderConnection = {
+    connectionString: process.env.DB_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+}
+

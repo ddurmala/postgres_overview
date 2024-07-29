@@ -1,0 +1,40 @@
+const router = require('express').Router();
+const Query = require('../lib/Query');
+
+// get route to send all students
+router.get('/students', async (request, response) => {
+    const students = await Query.getStudents();
+
+    response.json(students);
+});
+
+// get route to send all courses
+router.get('/courses', async (request, response) => {
+    const courses = await Query.getCourses();
+
+    response.json(courses);
+});
+
+// poste create a course
+router.post('/courses', async (request, response) => {
+    const formData = request.body;
+
+    await Query.addCourse(formData);
+    response.json({
+        message: 'course created successfully!'
+    });
+
+});
+
+router.post('/students', async (request, response) => {
+    const formData = request.body;
+
+    await Query.addStudent(formData);
+    response.json({
+        message: 'student created successfully!'
+    });
+
+});
+
+
+module.exports = router;
