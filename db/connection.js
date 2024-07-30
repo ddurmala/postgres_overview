@@ -11,10 +11,10 @@ const localConnection =
 }
 
 const renderConnection = {
-    connectionString: process.env.DB_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
+    host: 'dpg-cqk2v7iju9rs738fqseg-a',
+    user: 'dana',
+    password: '8CHAUD75J3U7v9GdRZlOurjG4bOJoLd6',
+    database: 'testing_db_awtm'
 }
 
 const client = new Pool(is_prod ? localConnection : renderConnection);
