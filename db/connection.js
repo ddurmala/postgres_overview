@@ -1,5 +1,5 @@
 const { Pool } = require('pg');
-const
+const is_prod = process.evi.NODE_ENV === 'production';
 
 
 
@@ -16,4 +16,8 @@ const renderConnection = {
         rejectUnauthorized: false
     }
 }
+
+const client = new Pool(is_prod ? localConnection : renderConnection);
+
+module.exports = client;
 
