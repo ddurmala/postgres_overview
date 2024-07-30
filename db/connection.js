@@ -1,5 +1,5 @@
 const { Pool } = require('pg');
-const is_prod = process.evi.NODE_ENV === 'production';
+const is_prod = process.env.NODE_ENV === 'production';
 
 
 
