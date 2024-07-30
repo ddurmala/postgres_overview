@@ -17,7 +17,8 @@ const renderConnection = {
     }
 }
 
-const client = new Pool(is_prod ? renderConnection : localConnection);
+const connectObj = is_prod ? renderConnection : localConnection;
+const client = new Pool(connectObj);
 
 module.exports = client;
 
