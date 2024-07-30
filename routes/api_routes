@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Query = require('../lib/Query');
+const Query = require('../lib/query');
 
 // get route to send all students
 router.get('/students', async (request, response) => {
