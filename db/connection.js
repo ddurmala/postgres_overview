@@ -17,7 +17,7 @@ const renderConnection = {
     database: 'testing_db_awtm'
 }
 
-const client = new Pool(is_prod ? localConnection : renderConnection);
+const client = new Pool(is_prod ? renderConnection : localConnection);
 
 module.exports = client;
 
