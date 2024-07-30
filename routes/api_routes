@@ -1,16 +1,26 @@
 const router = require('express').Router();
-const Query = require('../lib/Query');
+
+const Course = require('../models/Course');
+const Student = require('../models/Student');
+const Group = require('../models/Group');
 
 // get route to send all students
 router.get('/students', async (request, response) => {
-    const students = await Query.getStudents();
+    const students = await Student.findAll();
 
     response.json(students);
 });
 
+router.get('/groups', async (request, response) => {
+    const students = await Group.findAll();
+
+    response.json(groups);
+});
+
 // get route to send all courses
 router.get('/courses', async (request, response) => {
-    const courses = await Query.getCourses();
+    // findAll returns all rows in the table
+    const courses = await Course.findAll();
 
     response.json(courses);
 });
@@ -19,7 +29,8 @@ router.get('/courses', async (request, response) => {
 router.post('/courses', async (request, response) => {
     const formData = request.body;
 
-    await Query.addCourse(formData);
+    await Course.create(formData);
+
     response.json({
         message: 'course created successfully!'
     });
@@ -29,7 +40,17 @@ router.post('/courses', async (request, response) => {
 router.post('/students', async (request, response) => {
     const formData = request.body;
 
-    await Query.addStudent(formData);
+    await Student.create(formData);
+    response.json({
+        message: 'student created successfully!'
+    });
+
+});
+
+router.post('/groups', async (request, response) => {
+    const formData = request.body;
+
+    await Group.create(formData);
     response.json({
         message: 'student created successfully!'
     });
